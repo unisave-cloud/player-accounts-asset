@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <engine:Label text="Viewed database" />
+    <engine:Button text="Live (database)" name="button1"/>
+    <engine:Button text="Development (database)" name="button2"/>
+
+    <engine:Label text="Search players" />
+    <editor:ToolbarSearchField/>
+
+    <engine:Label text="Found players" />
+    <engine:Label text="1" />
+    <engine:Label text="2" />
+    <engine:Label text="3" />
+
+    <engine:Label text="Player detail" />
+    
+    <editor:ProgressBar />
+</engine:UXML>
