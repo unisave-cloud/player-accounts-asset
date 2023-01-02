@@ -50,6 +50,8 @@ namespace PlayerAccounts
         
         // links to forms and submit button
         
+        // with rememberMeToken
+        
         #endregion
 
         private JsonObject playerDocument = null;
@@ -69,8 +71,30 @@ namespace PlayerAccounts
 
         public void WatchMe(UnityAction callback)
         {
-            // TODO
             onPlayerChange.AddListener(callback);
+        }
+
+        public void UpdateMe<T>(T data)
+        {
+            JsonObject jsonData = Serializer.ToJson<T>(data);
+            
+            OnFacet<PlayerAccountsFacet>
+                .Call<JsonObject>(
+                    nameof(PlayerAccountsFacet.UpdateMe),
+                    jsonData
+                )
+                .Then(player => {
+                    // TODO
+                    Debug.Log("Received update response!");
+                    if (!this.enabled)
+                        Debug.Log("We are disabled!");
+                    playerDocument = player;
+                    onPlayerChange?.Invoke();
+                })
+                .Catch(exception => {
+                    // TODO
+                    Debug.LogException(exception);
+                });
         }
 
         public T Player<T>(string playerId)
